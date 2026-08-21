@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de avaliação</title>
+
+        <script>
+            class Aluno {
+                constructor(nome) {
+                    this.nome = nome; // guarda o nome
+                    this.notas = [];  // cria uma lista vazia para guardar as notas
+                }
+    
+                adicionarNota(nota) {
+                    // adiciona uma nota na lista com o push 
+                    this.notas.push(nota);
+                }
+    
+                calcularMedia() {
+                    // começa a soma das notas em 0
+                    let soma = 0;
+    
+                    // percorre todas as notas
+                    for (let i = 0; i < this.notas.length; i++) {
+                        soma += this.notas[i];
+                    }
+    
+                    // calcula a média
+                    return soma / this.notas.length;
+                }
+    
+                verificarAprovacao() {
+                    // pega a média do aluno
+                    let media = this.calcularMedia();
+    
+                    if (media >= 7) {
+                        console.log(this.nome + " - Aprovado");
+                    }
+                    else if (media >= 5) {
+                        console.log(this.nome + " - Em Recuperação");
+                    }
+                    else {
+                        console.log(this.nome + " - Reprovado");
+                    }
+                }
+            }
+    
+    
+            // cria um aluno novo
+            let aluno = new Aluno("Julia");
+    
+            // adiciona as notas
+            aluno.adicionarNota(8);
+            aluno.adicionarNota(7);
+            aluno.adicionarNota(9);
+    
+            // mostra a média
+            console.log("Média: " + aluno.calcularMedia());
+    
+            // verifica se foi aprovado
+            aluno.verificarAprovacao();
+    
+        </script>
+    
+    </head>
+    
+    <body>
+    
+    </body>
+    
+    </html>

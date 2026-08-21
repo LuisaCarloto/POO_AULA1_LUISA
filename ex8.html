@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG🎇✨🎲⚔</title>
+    <script>
+
+     class Personagem {
+
+        constructor(nome, vida, ataque) {
+            this.nome = nome;
+            this.vida = vida;
+            this.ataque = ataque;
+        }
+
+        atacar(alvo) {
+
+            // verifica se o personagem ainda está vivo
+            if (this.vida <= 0) {
+                console.log(this.nome + " não pode atacar, pois foi derrotado!");
+
+             } else {
+                // diminui a vida do alvo
+                alvo.vida -= this.ataque;
+
+            console.log(
+                this.nome + " atacou " +
+                alvo.nome + "!"
+            );
+
+            console.log(
+                alvo.nome + " ficou com " +
+                alvo.vida + " de vida."
+            );
+
+
+             // vê se o alvo foi derrotado
+                if (alvo.vida <= 0) {
+                alvo.vida = 0;
+
+            console.log(alvo.nome + " foi derrotado!");
+            }
+        }
+    }
+ }
+        let personagem1 = new Personagem("Aguiar", 100, 35);
+        let personagem2 = new Personagem("Velizar", 100, 34);
+        personagem1.atacar(personagem2);
+        personagem2.atacar(personagem1);
+
+    </script>
+</head>
+<body>
+</body>
+</html>

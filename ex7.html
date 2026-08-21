@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de compras</title>
+    <script>
+        class Produto {
+         constructor(id, nome, preco, estoque) {
+            // guarda as informações do produto
+            this.id = id;
+            this.nome = nome;
+            this.preco = preco;
+            this.estoque = estoque;
+            }
+        }
+        class Carrinho {
+        constructor() {
+             this.itens = [];
+            }
+         adicionarProduto(produto, quantidade) {
+            // verifica se tem estoque suficiente
+            if (quantidade <= produto.estoque) {
+                // diminui a quantidade do estoque
+            produto.estoque -= quantidade;
+            // adiciona o produto ao carrinho
+            this.itens.push({
+             produto: produto,
+             quantidade: quantidade
+                });
+
+            console.log(
+            quantidade + "x " +
+            produto.nome +
+            " adicionado ao carrinho!"
+        );
+
+            } else {
+            // mostra quanto ainda tem disponível
+            console.log(
+             "Estoque insuficiente! " +
+             "Quantidade disponível: " +
+             produto.estoque
+                );
+             }
+        }
+    }
+
+
+    // criando os produtos
+        let produto1 = new Produto(1, "Camiseta", 50, 10);
+        let produto2 = new Produto(2, "Tênis", 150, 5);
+     // cria carrinho
+        let carrinho = new Carrinho();
+
+
+    // coloca produtos no carrinho
+        carrinho.adicionarProduto(produto1, 3);
+        carrinho.adicionarProduto(produto2, 2);
+
+        // tentando adicionar mais produtos do que existe no estoque
+        carrinho.adicionarProduto(produto2, 10);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

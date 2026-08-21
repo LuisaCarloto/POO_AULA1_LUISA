@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <script>
+        class Livro {
+            constructor(titulo, autor) {
+                this.titulo = titulo;
+                this.autor = autor;
+                this.disponivel = true;
+            }
+            emprestar() {
+                if (this.disponivel == true) {
+                    this.disponivel = false;
+                    console.log(`O livro` + this.titulo`foi emprestado`)
+                } else {
+                    console.log(`O livro já foi emprestado`)
+                }
+            }
+            devolver() {
+                this.disponivel = true;
+                console.log(`Livro` + this.titulo`devolvido!`)
+            }
+        }
+
+        class Biblioteca {
+            constructor() {
+                this.acervo = [];
+            }
+            adicionarLivro(livro) {
+
+                // adiciona o livro no acervo
+                this.acervo.push(livro);
+            }
+
+            listarDisponiveis() {
+
+                console.log("Livros disponíveis:");
+
+                // vê todos os livros
+                for (let i = 0; i < this.acervo.length; i++) {
+
+                    // verifica se o livro está disponível
+                    if (this.acervo[i].disponivel == true) {
+
+                        console.log(
+                            this.acervo[i].titulo +
+                            " - " +
+                            this.acervo[i].autor
+                        );
+                    }
+                }
+            }
+        }
+
+
+        let livro1 = new Livro("O amor não é óbvio", "Elayne Baeta");
+        let livro2 = new Livro("Coisas óbvias sobre o amor", "Elayne Baeta");
+        let livro3 = new Livro("oxe, baby", "Elayne Baeta");
+
+
+        // criando a biblioteca
+        let biblioteca = new Biblioteca();
+
+        // adicionando os livros ao acervo
+        biblioteca.adicionarLivro(livro1);
+        biblioteca.adicionarLivro(livro2);
+        biblioteca.adicionarLivro(livro3);
+
+
+        // mostra os livros disponíveis
+        biblioteca.listarDisponiveis();
+
+
+        // empresta um livro
+        livro1.emprestar();
+
+        // tenta emprestar o mesmo livro
+        livro1.emprestar();
+
+
+        // mostra os disponíveis
+        biblioteca.listarDisponiveis();
+
+
+        // devolve o livro
+        livro1.devolver();
+
+        // mostra os disponíveis dnv
+        biblioteca.listarDisponiveis();
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

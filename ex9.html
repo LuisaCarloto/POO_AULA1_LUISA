@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        class Tarefa {
+            constructor(descricao) {
+                this.descricao = descricao;
+                // começa como não concluída
+                this.concluida = false;
+            }
+            concluir() {
+                // marca como concluída
+                this.concluida = true;
+            }
+            reabrir() {
+                // marca como não concluída
+                this.concluida = false;
+            }
+        }
+        class GerenciadorDeTarefas {
+            constructor() {
+                this.tarefas = [];
+            }
+            adicionarTarefa(descricao) {
+                // cria uma tarefa e coloca na lista
+                this.tarefas.push(new Tarefa(descricao));
+            }
+            listarPendentes() {
+                // Vê as tarefas
+                for (let i = 0; i < this.tarefas.length; i++) {
+                    // mostra só as não concluídas
+                    if (this.tarefas[i].concluida == false) {
+                        console.log(this.tarefas[i].descricao);
+                    }
+                }
+            }
+            obterEstatisticas() {
+                let concluidas = 0;
+                // conta as tarefas concluídas
+                for (let i = 0; i < this.tarefas.length; i++) {
+                    if (this.tarefas[i].concluida == true) {
+                        concluidas++;
+                    }
+                }
+                // calcula a porcentagem
+                let porcentagem = (concluidas / this.tarefas.length) * 100;
+
+                console.log("Total de tarefas: " + this.tarefas.length);
+                console.log("Tarefas concluídas: " + concluidas);
+                console.log(porcentagem + "% das tarefas concluídas");
+            }
+        }
+
+        // 1 cria o gerenciador
+        let gerenciador = new GerenciadorDeTarefas();
+        // 2 adiciona as tarefas
+        gerenciador.adicionarTarefa("Varrer a casa");
+        gerenciador.adicionarTarefa("Lavar a louça");
+        gerenciador.adicionarTarefa("Fazer Duolingo");
+        // 3 conclui a primeira tarefa
+        gerenciador.tarefas[0].concluir();
+        // 4 mostra as tarefas pendentes
+        gerenciador.listarPendentes();
+        //5  mostra as estatisticas
+        gerenciador.obterEstatisticas();
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frota de carros</title>
+    <script>
+
+        class Carro {
+
+            constructor(marca, modelo, ano, preco) {
+                // guarda as informações do carro
+                this.marca = marca;
+                this.modelo = modelo;
+                this.ano = ano;
+                this.preco = preco;
+            }
+        }
+
+
+        // cria uma lista com os carros
+        let frota = [
+
+            new Carro("Toyota", "Corolla", 2022, 120000),
+            new Carro("Honda", "Civic", 2020, 110000),
+            new Carro("Volkswagen", "Golf", 2019, 95000),
+            new Carro("Chevrolet", "Onix", 2023, 85000),
+            new Carro("Fiat", "Argo", 2021, 75000)
+        ];
+
+
+        // função para filtrar os carros pelo ano
+        function filtrarCarrosPorAno(frota, anoMinimo) {
+
+            // cria uma lista vazia para os carros filtrados
+            let carrosFiltrados = [];
+
+            // vê todos os carros da frota
+            for (let i = 0; i < frota.length; i++) {
+
+                // vê se o carro é do ano mínimo ou mais novo
+                if (frota[i].ano >= anoMinimo) {
+
+                    // coloca o carro na lista filtrada
+                    carrosFiltrados.push(frota[i]);
+                }
+            }
+
+            // volta a lista dos carros filtrados
+            return carrosFiltrados;
+        }
+
+
+        // calcula o valor total 
+        function calcularValorTotalFrota(frota) {
+
+            let total = 0;
+
+            // vê todos os carros
+            for (let i = 0; i < frota.length; i++) {
+
+                // soma o preço de cada carro
+                total += frota[i].preco;
+            }
+
+            // volta o valor total
+            return total;
+        }
+
+
+        // filtra os carros fabricados a partir de 2021
+        let carrosNovos = filtrarCarrosPorAno(frota, 2021);
+
+        console.log("Carros a partir de 2021:");
+
+        // mostra os carros encontrados
+        for (let i = 0; i < carrosNovos.length; i++) {
+
+            console.log(
+                carrosNovos[i].marca + " " +
+                carrosNovos[i].modelo + " - " +
+                carrosNovos[i].ano
+            );
+        }
+
+
+        // calcula o valor total de todos os carros
+        let valorTotal = calcularValorTotalFrota(frota);
+
+        console.log("Valor total da frota: R$ " + valorTotal);
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

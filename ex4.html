@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanchonete </title>
+    <script>
+
+        class Pedido {
+
+            constructor(numeroPedido) {
+                // guarda o número do pedido
+                this.numeroPedido = numeroPedido;
+
+                // cria uma lista vazia para os itens
+                this.itens = [];
+            }
+
+            adicionarItem(nome, preco) {
+
+                // cria um objeto com nome e preço
+                let item = {
+                    nome: nome,
+                    preco: preco
+                };
+
+                // adiciona no array
+                this.itens.push(item);
+            }
+
+            calcularTotal() {
+
+                let total = 0;
+
+                // percorre todos os itens
+                for (let i = 0; i < this.itens.length; i++) {
+
+                    total += this.itens[i].preco;
+                }
+
+                return total;
+            }
+
+            resumoPedido() {
+
+                console.log("Pedido Nº: " + this.numeroPedido);
+                console.log("Itens do pedido:");
+
+                // mostra os itens
+                for (let i = 0; i < this.itens.length; i++) {
+
+                    console.log(
+                        this.itens[i].nome +
+                        " - R$ " +
+                        this.itens[i].preco
+                    );
+                }
+
+                console.log("Total: R$ " + this.calcularTotal());
+            }
+
+        }
+
+
+        // cria um pedido
+        let pedido = new Pedido(1);
+
+        // adiciona itens
+        pedido.adicionarItem("Hambúrguer", 18);
+        pedido.adicionarItem("Batata", 10);
+        pedido.adicionarItem("Refrigerante", 6);
+
+        // mostra o resumo
+        pedido.resumoPedido();
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

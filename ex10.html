@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TELEVISÃO</title>
+    <script>
+
+        class TelevisaoSmart {
+            constructor() {
+                // começa no canal 1
+                this.canalAtual = 1;
+                // começa com volume 10
+                this.volume = 10;
+                // começa desligada
+                this.ligada = false;
+            }
+            ligar() {
+                // liga a televisão
+                this.ligada = true;
+                console.log("A TV foi ligada!");
+            }
+            desligar() {
+                // desliga a televisão
+                this.ligada = false;
+                console.log("A TV foi desligada!");
+            }
+            aumentarVolume() {
+                // verifica se a TV está ligada
+                if (this.ligada == false) {
+                    console.log("A TV está desligada! Ligue-a primeiro.");
+                } else {
+                    // aumenta o volume
+                    this.volume++;
+                    // não deixa passar de 100
+                    if (this.volume > 100) {
+                        this.volume = 100;
+                    }
+                }
+            }
+            diminuirVolume() {
+                // verifica se a TV está ligada
+                if (this.ligada == false) {
+                    console.log("A TV está desligada! Ligue-a primeiro.");
+                } else {
+                    // diminui o volume
+                    this.volume--;
+                    // não deixa ficar abaixo de 0
+                    if (this.volume < 0) {
+                        this.volume = 0;
+                    }
+                }
+            }
+            mudarCanal(novoCanal) {
+                // verifica se a TV está ligada
+                if (this.ligada == false) {
+                    console.log("A TV está desligada! Ligue-a primeiro.");
+
+                } else {
+                    // muda para o novo canal
+                    this.canalAtual = novoCanal;
+                    console.log("Canal alterado para: " + this.canalAtual);
+                }
+            }
+        }
+        // cria a televisão
+        let tv = new TelevisaoSmart();
+        // tenta aumentar o volume com a TV desligada
+        tv.aumentarVolume();
+        // liga a TV
+        tv.ligar();
+        // aumenta o volume
+        tv.aumentarVolume();
+        console.log("Volume atual: " + tv.volume);
+        // muda o canal
+        tv.mudarCanal(5);
+        // mostra o canal atual
+        console.log("Canal atual: " + tv.canalAtual);
+        // desliga a TV
+        tv.desligar();
+        // tenta mudar o canal com a TV desligada
+        tv.mudarCanal(10);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
